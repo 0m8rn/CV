@@ -1,0 +1,234 @@
+/* ─── TOUCH VISIBILITY HELPERS ─── */
+.touch-only { display: none; }
+html.touch .touch-only { display: block; }
+html.touch .desktop-only { display: none; }
+
+/* ─── SAFE AREA (notch + home bar) ─── */
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+#main-nav {
+  padding-top: max(0.9rem, env(safe-area-inset-top, 0px));
+}
+footer {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* ─── SAFARI WEBKIT FIXES ─── */
+#main-nav {
+  -webkit-backdrop-filter: blur(12px);
+}
+.glass-card, .contact-terminal, #terminal-modal {
+  -webkit-backdrop-filter: blur(8px);
+}
+html {
+  -webkit-overflow-scrolling: touch;
+}
+#hero-canvas, #bg-particles {
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Prevent Safari auto-zoom on terminal input focus */
+#terminal-input {
+  font-size: 16px !important;
+}
+/* Gradient text webkit fix */
+h2 {
+  -webkit-background-clip: text;
+}
+/* Sticky nav webkit */
+#main-nav {
+  position: -webkit-sticky;
+  position: fixed;
+}
+
+/* ─── ALL MOBILE (max 768px) ─── */
+@media (max-width: 768px) {
+
+  /* NAV — Hamburger drawer */
+  .nav-links {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+  }
+  .nav-hamburger:active {
+    background: var(--accent-green);
+    color: var(--bg-void);
+  }
+  /* Drawer panel */
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-glow);
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+    padding-top: max(1rem, env(safe-area-inset-top, 0px));
+  }
+  .nav-drawer.open {
+    transform: translateY(0);
+  }
+  .nav-drawer-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+  }
+  .nav-drawer-close {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-drawer a {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 1.5rem;
+    color: var(--accent-green);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-glow);
+    transition: var(--transition-fast);
+  }
+  .nav-drawer a:active {
+    background: rgba(0, 255, 65, 0.06);
+  }
+
+  /* HERO */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .hero-cta {
+    flex-direction: column;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+    min-height: 48px;
+  }
+  .scan-line {
+    display: none;
+  }
+
+  /* SKILLS */
+  #skills .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skill-card {
+    padding: 0.75rem 0.5rem;
+  }
+  .building-tags {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .building-tags::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* TIMELINE */
+  #experience .timeline {
+    padding-left: 2rem;
+  }
+  .block-card {
+    padding: 0.85rem;
+  }
+
+  /* PROJECTS */
+  #projects .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-number {
+    font-size: 4rem;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-terminal {
+    max-height: 240px;
+  }
+  .contact-terminal .btn {
+    width: calc(100% - 2rem);
+    min-height: 52px;
+    font-size: 1rem;
+    justify-content: center;
+  }
+  .social-row a {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* TERMINAL MODAL */
+  .terminal-window {
+    width: 95vw;
+    max-height: 80vh;
+  }
+  .terminal-output {
+    font-size: 0.78rem;
+  }
+
+  /* FOOTER HINT */
+  .terminal-hint {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* GLOBAL TOUCH TARGETS */
+  button, a, input, [role="button"] {
+    min-height: 44px;
+  }
+  
+  /* TYPOGRAPHY */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* ─── IPHONE SE (375px) ─── */
+@media (max-width: 380px) {
+  body { font-size: 13px; }
+  #glitch-name { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+  .hero-stats { gap: 0.75rem; }
+  .stat-block .stat-number { font-size: 1.4rem; }
+  #skills .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .terminal-window { max-height: 85vh; }
+}
+
+/* ─── REDUCE MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

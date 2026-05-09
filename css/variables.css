@@ -1,0 +1,30 @@
+:root {
+  --bg-void: #050507;
+  --bg-surface: #0d0d12;
+  --bg-glass: rgba(13, 13, 18, 0.7);
+  --accent-green: #00ff41;
+  --accent-blue: #00d4ff;
+  --accent-orange: #f7931a;
+  --accent-purple: #8b5cf6;
+  --text-primary: #e8e8f0;
+  --text-dim: #555570;
+  --text-code: #00ff41;
+  --border-glow: rgba(0, 212, 255, 0.15);
+
+  --font-display: "Share Tech Mono", monospace;
+  --font-body: "IBM Plex Mono", monospace;
+  --font-accent: "Orbitron", sans-serif;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+}
